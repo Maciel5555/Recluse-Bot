@@ -3,17 +3,17 @@ const fetch = require('node-fetch')//npm i node-fetch if you have it then dont d
                  
 module.exports = {
     name: 'iphonex',
-    category: 'Image',
-    description: 'Iphone X User Profile',
+    category: 'Imagem',
+    description: 'Perfil do usuário no iphonex',
     usage: 'iphonex <user>',
     run: async (client, message, args) => {
         message.channel.startTyping();
         let mention = message.mentions.members.first();
 
-        let m = await message.channel.send("**Please wait... Adding Image...**");
+        let m = await message.channel.send("<a:atlanta_loading:743090350490648727> **Aguarde... Adicionado imagem...**");
 
         if (!mention) {
-            m.edit("⚠ Please mention someone");
+            m.edit("<:atlanta_error:736144198318686278> **Mencione alguem!**");
             return message.channel.stopTyping();
         }
         try {
@@ -24,7 +24,7 @@ module.exports = {
             message.channel.stopTyping();
             m.delete();
         } catch (e) {
-            m.edit("⚠ Error, Try Again!");
+            m.edit("<:atlanta_error:736144198318686278> **Algum erro ocorreu, Tente novamente**!");
             return message.channel.stopTyping();
         }
     }
