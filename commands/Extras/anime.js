@@ -43,17 +43,17 @@ module.exports = {
         .setDescription(Anime.synopsis)
         .addField(`<:Rc:865979625409609728> Tipo`, Anime.type, true)
         .addField(`<:announce_dark:874348677009920120> Status`, Anime.status, true)
-        .addField(`Premiered`, Anime.premiered, true)
-        .addField(`Episodes`, Anime.episodes, true)
-        .addField(`Duration`, Anime.duration, true)
-        .addField(`Popularity`, Anime.popularity, true)
-        .addField(`Gneres`, Anime.genres.join(", "))
+        .addField(`<:owner1:866155255338369044> Premiado`, Anime.premiered, true)
+        .addField(`<:ArrowRR:867324401015980063> Episodios`, Anime.episodes, true)
+        .addField(`<:time:866155257775259689> Duração`, Anime.duration, true)
+        .addField(`<:ArrowRR:867324401015980063> Popularidade`, Anime.popularity, true)
+        .addField(`<:ticket1:881128707065016320> Genêro`, Anime.genres.join(", "))
         .setThumbnail(Anime.picture)
         .setFooter(`Score - ${Anime.score}`)
         .setTimestamp();
 
         } catch (error) {
-          return message.channel.send(`No Anime Found!`);
+          return message.channel.send(`<:atlanta_error:736144198318686278> **Nenhum anime encontrado!**`);
         };
 
         return message.channel.send(Embed);
