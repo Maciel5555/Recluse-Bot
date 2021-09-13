@@ -4,7 +4,7 @@ const db = require("quick.db");
 
 module.exports = {
   name: "reply",
-  category: "moderation",
+  category: "moderação",
   run: async (client, message, args) => {
     
 let channel = await db.fetch(`suggestion_${message.guild.id}`);
@@ -18,27 +18,27 @@ if (channel === null) return;
     const replyQuery = args.slice(1).join(' ');
       
     const number = new MessageEmbed()
-      .setDescription(`<a:wrongggg:822102127097806878>   | I don't think that was a Message ID!`)
+      .setDescription(`<:atlanta_error:736144198318686278> **Não acho que e um ID de mensagem!**`)
       .setColor("FF2052")
       
     const id = new MessageEmbed()
-      .setDescription(`<a:wrongggg:822102127097806878> |You forgot to specify Message ID!`)
+      .setDescription(`<:atlanta_error:736144198318686278> **Fale o ID da mensagem**!`)
       .setColor("FF2052")
       
     const query = new MessageEmbed()
-      .setDescription(`<a:wrongggg:822102127097806878>  | You forgot to specify the Reply!`)
+      .setDescription(`<:atlanta_error:736144198318686278> **Você de especificar a resposta**!`)
       .setColor("FF2052")
       
     const reply = new MessageEmbed()
-      .setDescription(`<a:checkmark:822102129731698697>  | Successfully Replied the Suggestion.`)
+      .setDescription(`<:atlanta_success:736144092123234354> **Sugestão respondida com sucesso**.`)
       .setColor("00FFFF")
       
     const noChannel = new MessageEmbed()
-      .setDescription(`<a:wrongggg:822102127097806878>  | No Suggestion Channel found!`)
+      .setDescription(`<:atlanta_error:736144198318686278> **O Canal de sugestão ainda não foi setado!**`)
       .setColor("FF2052")
       
     const noMessage = new MessageEmbed()
-      .setDescription(`<a:wrongggg:822102127097806878>  | Didn't find any Message with that ID!`)
+      .setDescription(`<:atlanta_error:736144198318686278> **Não foi encontrada nenhuma mensagem com esse ID**!`)
       .setColor("FF2052")
     
       if(!messageID) return message.channel.send(id);
@@ -54,7 +54,7 @@ if (channel === null) return;
       
       const suggestedEmbed = await suggestionChannel.messages.fetch(messageID).catch(error => {
     const noMessage = new MessageEmbed()
-      .setDescription(`<a:wrongggg:822102127097806878>  | Didn't find any Message with that ID!`)
+      .setDescription(`<:atlanta_error:736144198318686278> **Não foi encontrada nenhuma mensagem com esse ID**!`)
       .setColor("FF2052")
   return message.channel.send(noMessage);
   })
@@ -65,7 +65,7 @@ if (channel === null) return;
       .setAuthor(`${data.author.name}`, data.author.iconURL)
       .setDescription(data.description)
       .setColor("BLUE")
-      .addField(`Reply from ${message.author.tag}`, replyQuery)
+      .addField(`Requisitada Por ${message.author.
       .setFooter("Status: Replied")
       .setTimestamp();
       
@@ -76,7 +76,7 @@ if (channel === null) return;
       const user = await client.users.cache.find((u) => u.tag === data.author.name)
       
     const embed = new MessageEmbed()
-      .setDescription(`You have got a Reply over your Suggestion. **[Message Link](https://discord.com/channels/${message.guild.id}/${channel}/${messageID})**`)
+      .setDescription(`<:atlanta_success:736144092123234354> Você recebeu uma respota pra sua sugestão**. **[Mensagem Link](https://discord.com/channels/${message.guild.id}/${channel}/${messageID})**`)
       .setColor("BLUE")
       user.send(embed)
         
