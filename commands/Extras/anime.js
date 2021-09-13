@@ -8,19 +8,19 @@ const Scraper = require("mal-scraper"); //npm i mal-scraper
 module.exports = {
     name: "anime",
     category: "info",
-    description: "Anime Information!",
-    usage: "Anime <Name>",
+    description: "Busca informações do anime!",
+    usage: "Anime <Nome do Anime>",
     run: async (client, message, args) => {
 
         //Start
 
         let Text = args.join(" ");
 
-        if (!Text) return message.channel.send(`<:recluse13:827728042448388096> | Please Give anime character to search information about that!`);
+        if (!Text) return message.channel.send(`<:atlanta_error:736144198318686278> **Fale um anime**!`);
 
-        if (Text.length > 200) return message.channel.send(`Text Limit - 200`);
+        if (Text.length > 200) return message.channel.send(`<:atlanta_error:736144198318686278> **O Anime não pode ter o nome tão grande!**`);
 
-        let Msg = await message.channel.send(`**Searching It For You <:recluse14:827755244167495720> please wait for while**`);
+        let Msg = await message.channel.send(`<:atlanta_success:736144092123234354> **Pesquisando...**`);
 
         let Replaced = Text.replace(/ +/g, " ");
 
@@ -34,15 +34,15 @@ module.exports = {
 
         Anime = await Scraper.getInfoFromName(Replaced);
 
-        if (!Anime.genres[0] || Anime.genres[0] === null) Anime.genres[0] = "None";
+        if (!Anime.genres[0] || Anime.genres[0] === null) Anime.genres[0] = "Nenhum";
 
         Embed = new MessageEmbed()
         .setColor(Color || "RANDOM")
         .setURL(Anime.url)
         .setTitle(Anime.title)
         .setDescription(Anime.synopsis)
-        .addField(`Type`, Anime.type, true)
-        .addField(`Status`, Anime.status, true)
+        .addField(`<:Rc:865979625409609728> Tipo`, Anime.type, true)
+        .addField(`<:announce_dark:874348677009920120> Status`, Anime.status, true)
         .addField(`Premiered`, Anime.premiered, true)
         .addField(`Episodes`, Anime.episodes, true)
         .addField(`Duration`, Anime.duration, true)
